@@ -3,6 +3,7 @@
 namespace App\Course\Controllers;
 
 use App\Course\Resources\Course as CourseResource;
+use App\Course\Resources\Enrollment as EnrollmentResource;
 use App\Course\Resources\CourseCollection;
 use Domain\Course\Models\Course;
 use Domain\Course\Models\Enrollment;
@@ -67,11 +68,19 @@ final class CourseController extends Controller
             ]);
     }
 
-    public function enroll($id)
+    public function enroll(Course $course)
     {
-        return Enrollment::create([
-            'course_id' => $id,
-            'user_id'   => Auth::guard('api')->user()->id,
+        $user = $this->guard()->user();
+
+        $user->enrolledCourses()->syncWithoutDetaching($course);
+
+        return response()->json([
+            'message' => 'Course successfully enrolled by user.',
         ]);
+    }
+
+    public function guard()
+    {
+        return Auth::guard('api');
     }
 }
