@@ -69,4 +69,25 @@ final class ChapterController extends Controller
 
         return new ChapterResource($chapter);
     }
+
+    public function update(Request $request, Chapter $chapter)
+    {
+        $request->validate([
+            'slug' => ['required', 'string', 'unique:chapters'],
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'course_id' => ['required', 'integer'],
+        ]);
+
+        $chapter->course_id = $request->input('course_id');
+        $chapter->slug = $request->input('slug');
+        $chapter->title = $request->input('title');
+        $chapter->description = $request->input('description');
+        $chapter->save();
+
+        return (new ChapterResource($chapter))
+            ->additional([
+                'message' => 'Chapter updated successfully.',
+            ]);
+    }
 }
