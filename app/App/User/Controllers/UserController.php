@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\User\Controllers;
+namespace App\User\Controllers;
 
 use App\User\Requests\UserUpdateRequest;
 use App\User\Resources\User as UserResource;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\Course\Controllers;
+namespace App\Course\Controllers;
 
 use Domain\Course\Models\Chapter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\View\Controllers;
+namespace App\View\Controllers;
 
 use Domain\Course\Models\Course;
 use Domain\Topic\Models\Topic;

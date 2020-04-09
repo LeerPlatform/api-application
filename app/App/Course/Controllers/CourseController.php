@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\Course\Controllers;
+namespace App\Course\Controllers;
 
 use App\Course\Resources\Course as CourseResource;
 use App\Course\Resources\CourseCollection;

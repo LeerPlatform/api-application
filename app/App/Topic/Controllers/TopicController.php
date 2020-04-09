@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\Topic\Controllers;
+namespace App\Topic\Controllers;
 
 use App\Course\Resources\CourseCollection;
 use App\Topic\Resources\Topic as TopicResource;

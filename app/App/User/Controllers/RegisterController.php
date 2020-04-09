@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Api\User\Controllers;
+namespace App\User\Controllers;
 
 use App\User\Resources\User as UserResource;
 use Domain\User\Models\User;
