@@ -19,8 +19,11 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('courses')->group(function () {
         Route::get('/', [CourseController::class, 'index']);
+        Route::post('/', [CourseController::class, 'store']);
         Route::get('/{id}', [CourseController::class, 'show']);
-        Route::post('/{id}/enroll', [CourseController::class, 'enroll'])->middleware('auth:api');
+        Route::put('/{course}', [CourseController::class, 'update']);
+        Route::delete('/{course}', [CourseController::class, 'destroy']);
+        Route::post('/{course}/enroll', [CourseController::class, 'enroll'])->middleware('auth:api');
     });
 
     Route::prefix('chapters')->group(function () {
