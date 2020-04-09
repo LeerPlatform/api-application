@@ -57,6 +57,16 @@ final class CourseController extends Controller
         return new CourseResource($course);
     }
 
+    public function destroy(Course $course)
+    {
+        $course->delete();
+
+        return (new CourseResource($course))
+            ->additional([
+                'message' => 'Course deleted successfully.',
+            ]);
+    }
+
     public function enroll($id)
     {
         return Enrollment::create([
