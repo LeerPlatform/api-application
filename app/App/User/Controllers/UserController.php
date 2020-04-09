@@ -2,8 +2,8 @@
 
 namespace App\Api\User\Controllers;
 
-use App\Api\User\Requests\UserUpdateRequest;
-use App\Api\User\Resources\User as UserResource;
+use App\User\Requests\UserUpdateRequest;
+use App\User\Resources\User as UserResource;
 use Domain\User\Models\User;
 use Illuminate\Support\Facades\Auth;
 

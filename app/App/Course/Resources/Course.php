@@ -2,8 +2,8 @@
 
 namespace App\Api\Course\Resources;
 
-use App\Api\Topic\Resources\Topic;
-use App\Api\User\Resources\UserCollection;
+use App\Topic\Resources\Topic;
+use App\User\Resources\UserCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Course extends JsonResource

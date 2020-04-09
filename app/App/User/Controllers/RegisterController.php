@@ -2,7 +2,7 @@
 
 namespace App\Api\User\Controllers;
 
-use App\Api\User\Resources\User as UserResource;
+use App\User\Resources\User as UserResource;
 use Domain\User\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;

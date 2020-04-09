@@ -2,7 +2,7 @@
 
 namespace App\Api\Topic\Resources;
 
-use App\Api\Course\Resources\CourseCollection;
+use App\Course\Resources\CourseCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Topic extends JsonResource

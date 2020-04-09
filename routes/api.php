@@ -1,12 +1,12 @@
 <?php
 
-use App\Api\Course\Controllers\ChapterController;
-use App\Api\Course\Controllers\CourseController;
-use App\Api\Topic\Controllers\TopicController;
-use App\Api\User\Controllers\LoginController;
-use App\Api\User\Controllers\RegisterController;
-use App\Api\User\Controllers\UserController;
-use App\Api\View\Controllers\ViewController;
+use App\Course\Controllers\ChapterController;
+use App\Course\Controllers\CourseController;
+use App\Topic\Controllers\TopicController;
+use App\User\Controllers\LoginController;
+use App\User\Controllers\RegisterController;
+use App\User\Controllers\UserController;
+use App\View\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {

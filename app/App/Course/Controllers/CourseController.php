@@ -2,8 +2,8 @@
 
 namespace App\Api\Course\Controllers;
 
-use App\Api\Course\Resources\Course as CourseResource;
-use App\Api\Course\Resources\CourseCollection;
+use App\Course\Resources\Course as CourseResource;
+use App\Course\Resources\CourseCollection;
 use Domain\Course\Models\Course;
 use Domain\Course\Models\Enrollment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

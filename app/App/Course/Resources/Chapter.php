@@ -2,11 +2,10 @@
 
 namespace App\Api\Course\Resources;
 
-use App\Api\Topic\Resources\Topic;
-use App\Api\User\Resources\UserCollection;
+use App\User\Resources\UserCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Section extends JsonResource
+class Chapter extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,9 +20,9 @@ class Section extends JsonResource
             'id'                     => $this->id,
             'slug'                   => $this->slug,
             'title'                  => $this->title,
-            'content_type'            => $this->content_type,
-            'content'            => $this->content,
-            'chapter'                => new Chapter($this->whenLoaded('chapter')),
+            'description'            => $this->description,
+            'course'                => new Course($this->whenLoaded('course')),
+            'sections'                  => new SectionCollection($this->whenLoaded('section')),
             'created_at'             => $this->created_at,
             'updated_at'             => $this->updated_at,
         ];

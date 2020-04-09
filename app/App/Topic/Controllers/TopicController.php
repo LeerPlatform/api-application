@@ -2,9 +2,9 @@
 
 namespace App\Api\Topic\Controllers;
 
-use App\Api\Course\Resources\CourseCollection;
-use App\Api\Topic\Resources\Topic as TopicResource;
-use App\Api\Topic\Resources\TopicCollection;
+use App\Course\Resources\CourseCollection;
+use App\Topic\Resources\Topic as TopicResource;
+use App\Topic\Resources\TopicCollection;
 use Domain\Topic\Models\Topic;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
