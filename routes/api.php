@@ -31,6 +31,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/', [ChapterController::class, 'store']);
         Route::put('/{chapter}', [ChapterController::class, 'update']);
         Route::get('/{id}', [ChapterController::class, 'show']);
+        Route::delete('/{chapter}', [ChapterController::class, 'destroy']);
     });
 
     Route::prefix('topics')->group(function () {

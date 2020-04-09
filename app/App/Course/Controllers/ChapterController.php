@@ -90,4 +90,14 @@ final class ChapterController extends Controller
                 'message' => 'Chapter updated successfully.',
             ]);
     }
+
+    public function destroy(Chapter $chapter)
+    {
+        $chapter->delete();
+
+        return (new ChapterResource($chapter))
+            ->additional([
+                'message' => 'Chapter deleted successfully.',
+            ]);
+    }
 }
