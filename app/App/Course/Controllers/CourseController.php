@@ -39,6 +39,34 @@ final class CourseController extends Controller
         return new CourseCollection($courses);
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'slug' => ['required', 'string', 'unique:courses'],
+            'title' => ['required', 'string'],
+            'headline' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'description_excerpt' => ['required', 'string'],
+            'learning_points' => ['required', 'array'],
+            'target_audience' => ['required', 'array'],
+        ]);
+
+        $course = new Course();
+        $course->slug = $request->input('slug');
+        $course->title = $request->input('title');
+        $course->headline = $request->input('headline');
+        $course->description = $request->input('description');
+        $course->description_excerpt = $request->input('description_excerpt');
+        $course->learning_points = $request->input('learning_points');
+        $course->target_audience = $request->input('target_audience');
+        $course->save();
+
+        return (new CourseResource($course))
+            ->additional([
+                'message' => 'Course created successfully.',
+            ]);
+    }
+
     protected function show($id)
     {
         $course = QueryBuilder::for(Course::class)
