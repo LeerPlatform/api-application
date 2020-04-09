@@ -2,12 +2,14 @@
 
 namespace Domain\User\Models;
 
+use Domain\Course\Models\Course;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable implements JWTSubject, HasMedia
 {
@@ -24,6 +26,13 @@ class User extends Authenticatable implements JWTSubject, HasMedia
         'email_verified_at' => 'datetime',
         'last_login_at'     => 'datetime',
     ];
+
+    public function enrolledCourses(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class, 'course_enrolled', 'user_id', 'course_id')
+            ->as('enrollment')
+            ->withTimestamps();
+    }
 
     public function registerMediaConversions(Media $media = null): void
     {
