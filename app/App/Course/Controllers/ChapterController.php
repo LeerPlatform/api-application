@@ -31,6 +31,28 @@ final class ChapterController extends Controller
         return new ChapterCollection($chapters);
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'slug' => ['required', 'string', 'unique:chapters'],
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'course_id' => ['required', 'integer'],
+        ]);
+
+        $chapter = new Chapter();
+        $chapter->course_id = $request->input('course_id');
+        $chapter->slug = $request->input('slug');
+        $chapter->title = $request->input('title');
+        $chapter->description = $request->input('description');
+        $chapter->save();
+
+        return (new ChapterResource($chapter))
+            ->additional([
+                'message' => 'Chapter created successfully.',
+            ]);
+    }
+
     protected function show($id)
     {
         $chapter = QueryBuilder::for(Chapter::class)
