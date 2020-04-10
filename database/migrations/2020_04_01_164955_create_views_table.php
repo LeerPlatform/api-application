@@ -49,14 +49,4 @@ class CreateViewsTable extends Migration
             $table->timestamp('viewed_at')->useCurrent();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists($this->table);
-    }
 }

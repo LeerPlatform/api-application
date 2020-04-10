@@ -26,10 +26,4 @@ class CreateTagTables extends Migration
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
-
-    public function down()
-    {
-        Schema::drop('taggables');
-        Schema::drop('tags');
-    }
 }
