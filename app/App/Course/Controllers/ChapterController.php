@@ -13,7 +13,7 @@ use Support\Controller;
 
 final class ChapterController extends Controller
 {
-    protected function index()
+    public function index()
     {
         $chapters = QueryBuilder::for(Chapter::class)
             ->allowedFilters([
@@ -53,7 +53,7 @@ final class ChapterController extends Controller
             ]);
     }
 
-    protected function show(Chapter $chapter)
+    public function show(Chapter $chapter)
     {
         $chapter = QueryBuilder::for(Chapter::class)
             ->allowedIncludes([

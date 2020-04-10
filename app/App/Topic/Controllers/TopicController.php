@@ -14,7 +14,7 @@ use Support\Controller;
 
 final class TopicController extends Controller
 {
-    protected function index()
+    public function index()
     {
         $topics = QueryBuilder::for(Topic::class)
             ->allowedFilters([
@@ -51,7 +51,7 @@ final class TopicController extends Controller
             ]);
     }
 
-    protected function show(Topic $topic)
+    public function show(Topic $topic)
     {
         $topic = QueryBuilder::for(Topic::class)
             ->allowedIncludes([

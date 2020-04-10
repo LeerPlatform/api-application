@@ -16,7 +16,7 @@ use Support\Controller;
 
 final class CourseController extends Controller
 {
-    protected function index()
+    public function index()
     {
         $courses = QueryBuilder::for(Course::class)
             ->allowedFilters([
@@ -67,7 +67,7 @@ final class CourseController extends Controller
             ]);
     }
 
-    protected function show($id)
+    public function show($id)
     {
         $course = QueryBuilder::for(Course::class)
             ->allowedIncludes([

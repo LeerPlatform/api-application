@@ -43,7 +43,10 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'index']);
+        Route::get('/{user}', [UserController::class, 'show']);
         Route::put('/{id}', [UserController::class, 'update']);
+        Route::delete('/{user}', [UserController::class, 'destroy']);
     });
 
     Route::prefix('views')->group(function () {
