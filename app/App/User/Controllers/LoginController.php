@@ -12,11 +12,6 @@ final class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    public function __construct()
-    {
-        $this->middleware('guest:api')->except('logout');
-    }
-
     protected function attemptLogin(Request $request)
     {
         $token = $this->guard()->attempt($this->credentials($request));
