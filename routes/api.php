@@ -29,7 +29,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('chapters')->group(function () {
         Route::get('/', [ChapterController::class, 'index']);
         Route::post('/', [ChapterController::class, 'store']);
-        Route::get('/{id}', [ChapterController::class, 'show']);
+        Route::get('/{chapter}', [ChapterController::class, 'show']);
         Route::put('/{chapter}', [ChapterController::class, 'update']);
         Route::delete('/{chapter}', [ChapterController::class, 'destroy']);
     });

@@ -53,19 +53,15 @@ final class ChapterController extends Controller
             ]);
     }
 
-    protected function show($id)
+    protected function show(Chapter $chapter)
     {
         $chapter = QueryBuilder::for(Chapter::class)
             ->allowedIncludes([
                 'course',
                 'sections',
             ])
-            ->where('id', $id)
+            ->where('id', $chapter->getKey())
             ->first();
-
-        if ($chapter === null) {
-            throw new ModelNotFoundException();
-        }
 
         return new ChapterResource($chapter);
     }
