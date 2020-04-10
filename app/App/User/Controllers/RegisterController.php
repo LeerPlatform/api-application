@@ -14,11 +14,6 @@ final class RegisterController extends Controller
 {
     use RegistersUsers;
 
-    public function __construct()
-    {
-        $this->middleware('guest:api');
-    }
-
     protected function registered(Request $request, User $user)
     {
         return new UserResource($user);
