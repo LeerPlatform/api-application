@@ -15,14 +15,12 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-
             $table->string('slug');
             $table->string('title');
             $table->string('content_type')->nullable();
             $table->text('content')->nullable();
             $table->boolean('draft')->default(true);
             $table->boolean('status')->default(false);
-
             $table->timestamps();
         });
     }

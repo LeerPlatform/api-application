@@ -15,10 +15,8 @@ class CreateCourseChapterTable extends Migration
     {
         Schema::create('course_chapter', function (Blueprint $table) {
             $table->id();
-
             $table->integer('course_id')->unsigned()->index();
             $table->integer('chapter_id')->unsigned()->index();
-
             $table->timestamps();
         });
     }

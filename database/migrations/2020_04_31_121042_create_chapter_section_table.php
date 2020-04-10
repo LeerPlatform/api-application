@@ -15,10 +15,8 @@ class CreateChapterSectionTable extends Migration
     {
         Schema::create('chapter_section', function (Blueprint $table) {
             $table->id();
-
             $table->integer('chapter_id')->unsigned();
             $table->integer('section_id')->unsigned();
-
             $table->timestamps();
         });
     }
