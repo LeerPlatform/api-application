@@ -27,6 +27,11 @@ class User extends Authenticatable implements JWTSubject, HasMedia
         'last_login_at'     => 'datetime',
     ];
 
+    public function studentAccount()
+    {
+        return $this->hasOne(StudentAccount::class);
+    }
+
     public function enrolledCourses(): BelongsToMany
     {
         return $this->belongsToMany(Course::class, 'course_enrolled', 'user_id', 'course_id')
