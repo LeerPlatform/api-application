@@ -29,13 +29,17 @@ Route::prefix('v1')->group(function () {
     Route::prefix('chapters')->group(function () {
         Route::get('/', [ChapterController::class, 'index']);
         Route::post('/', [ChapterController::class, 'store']);
-        Route::put('/{chapter}', [ChapterController::class, 'update']);
         Route::get('/{id}', [ChapterController::class, 'show']);
+        Route::put('/{chapter}', [ChapterController::class, 'update']);
         Route::delete('/{chapter}', [ChapterController::class, 'destroy']);
     });
 
     Route::prefix('topics')->group(function () {
         Route::get('/', [TopicController::class, 'index']);
+        Route::post('/', [TopicController::class, 'store']);
+        Route::get('/{topic}', [TopicController::class, 'show']);
+        Route::put('/{topic}', [TopicController::class, 'update']);
+        Route::delete('/{topic}', [TopicController::class, 'destroy']);
     });
 
     Route::prefix('users')->group(function () {

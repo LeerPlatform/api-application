@@ -30,4 +30,65 @@ final class TopicController extends Controller
 
         return new TopicCollection($topics);
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'slug' => ['required', 'string', 'unique:topics'],
+            'display_name' => ['required', 'string'],
+            'description' => ['required', 'string'],
+        ]);
+
+        $topic = new Topic();
+        $topic->slug = $request->input('slug');
+        $topic->display_name = $request->input('display_name');
+        $topic->description = $request->input('description');
+        $topic->save();
+
+        return (new TopicResource($topic))
+            ->additional([
+                'message' => 'Topic created successfully.',
+            ]);
+    }
+
+    protected function show(Topic $topic)
+    {
+        $topic = QueryBuilder::for(Topic::class)
+            ->allowedIncludes([
+                'courses',
+            ])
+            ->where('id', $topic->getKey())
+            ->first();
+
+        return new TopicResource($topic);
+    }
+
+    public function update(Request $request, Topic $topic)
+    {
+        $request->validate([
+            'slug' => ['required', 'string', 'unique:topics'],
+            'display_name' => ['required', 'string'],
+            'description' => ['required', 'string'],
+        ]);
+
+        $topic->slug = $request->input('slug');
+        $topic->display_name = $request->input('display_name');
+        $topic->description = $request->input('description');
+        $topic->save();
+
+        return (new TopicResource($topic))
+            ->additional([
+                'message' => 'Topic updated successfully.',
+            ]);
+    }
+
+    public function destroy(Topic $topic)
+    {
+        $topic->delete();
+
+        return (new TopicResource($topic))
+            ->additional([
+                'message' => 'Topic deleted successfully.',
+            ]);
+    }
 }
