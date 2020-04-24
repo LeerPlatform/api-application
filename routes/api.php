@@ -11,10 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::prefix('auth')->group(function () {
-        Route::post('login', [LoginController::class, 'login'])->middleware('auth:api');
-        Route::post('logout', [LoginController::class, 'logout'])->middleware('auth:api');
-        Route::post('register', [RegisterController::class, 'register'])->middleware('guest:api');
-        Route::get('user', [UserController::class, 'authenticated'])->middleware('auth:api');
+        Route::post('login', [LoginController::class, 'login'])->middleware('guest:api');
+        Route::post('logout', LogoutController::class, 'logout')->middleware('auth:api');
+        Route::get('user', AuthenticatedUserController::class)->middleware('auth:api');
     });
 
     Route::prefix('courses')->group(function () {
