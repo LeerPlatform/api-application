@@ -6,14 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCourseChapterTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('course_chapter', function (Blueprint $table) {
+        Schema::create('course_unit', function (Blueprint $table) {
             $table->id();
             $table->integer('course_id')->unsigned()->index();
             $table->integer('chapter_id')->unsigned()->index();

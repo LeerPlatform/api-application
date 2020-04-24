@@ -4,21 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChaptersTable extends Migration
+class CreateSectionsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('chapters', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->integer('course_id');
             $table->string('slug');
             $table->string('title');
-            $table->text('description')->nullable();
+            $table->string('content_type')->nullable();
+            $table->text('content')->nullable();
             $table->boolean('draft')->default(true);
             $table->boolean('status')->default(false);
             $table->timestamps();

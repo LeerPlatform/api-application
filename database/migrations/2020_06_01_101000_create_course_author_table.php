@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCourseAuthorTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('course_author', function (Blueprint $table) {
