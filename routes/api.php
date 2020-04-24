@@ -4,16 +4,24 @@ use App\Course\Controllers\UnitController;
 use App\Course\Controllers\CourseController;
 use App\Topic\Controllers\TopicController;
 use App\User\Controllers\LoginController;
-use App\User\Controllers\RegisterController;
+use App\User\Controllers\LogoutController;
+use App\Student\Controllers\RegisterController;
+use App\User\Controllers\AuthenticatedUserController;
 use App\User\Controllers\UserController;
 use App\View\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::prefix('auth')->group(function () {
-        Route::post('login', [LoginController::class, 'login'])->middleware('guest:api');
-        Route::post('logout', LogoutController::class, 'logout')->middleware('auth:api');
-        Route::get('user', AuthenticatedUserController::class)->middleware('auth:api');
+        Route::prefix('user')->group(function () {
+            Route::post('login', [LoginController::class, 'login'])->middleware('guest:api');
+            Route::post('logout', LogoutController::class, 'logout')->middleware('auth:api');
+            Route::get('user', AuthenticatedUserController::class)->middleware('auth:api');
+        });
+
+        Route::prefix('student')->group(function () {
+            Route::post('register', [RegisterController::class, 'register'])->middleware('guest:api');
+        });
     });
 
     Route::prefix('courses')->group(function () {
