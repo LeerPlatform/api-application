@@ -6,8 +6,8 @@ use Domain\Model;
 
 class Section extends Model
 {
-    public function chapter()
+    public function unit()
     {
-        return $this->belongsToMany(Chapter::class, 'chapter_section', 'section_id', 'chapter_id');
+        return $this->belongsToMany(Unit::class, 'unit_section', 'section_id', 'unit_id');
     }
 }

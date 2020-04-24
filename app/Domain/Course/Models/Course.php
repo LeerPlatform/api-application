@@ -29,9 +29,9 @@ class Course extends Model implements Viewable
         return $this->belongsTo(Topic::class);
     }
 
-    public function chapters(): HasMany
+    public function units(): HasMany
     {
-        return $this->hasMany(Chapter::class, 'course_id');
+        return $this->hasMany(Unit::class, 'course_id');
     }
 
     public function authors()//: BelongsToMany

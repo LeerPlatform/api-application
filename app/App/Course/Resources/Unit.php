@@ -5,7 +5,7 @@ namespace App\Course\Resources;
 use App\User\Resources\UserCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Chapter extends JsonResource
+class Unit extends JsonResource
 {
     /**
      * Transform the resource into an array.
