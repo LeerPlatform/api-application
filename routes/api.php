@@ -1,6 +1,6 @@
 <?php
 
-use App\Course\Controllers\ChapterController;
+use App\Course\Controllers\UnitController;
 use App\Course\Controllers\CourseController;
 use App\Topic\Controllers\TopicController;
 use App\User\Controllers\LoginController;
@@ -26,12 +26,12 @@ Route::prefix('v1')->group(function () {
         Route::post('/{course}/enroll', [CourseController::class, 'enroll'])->middleware('auth:api');
     });
 
-    Route::prefix('chapters')->group(function () {
-        Route::get('/', [ChapterController::class, 'index']);
-        Route::post('/', [ChapterController::class, 'store']);
-        Route::get('/{chapter}', [ChapterController::class, 'show']);
-        Route::put('/{chapter}', [ChapterController::class, 'update']);
-        Route::delete('/{chapter}', [ChapterController::class, 'destroy']);
+    Route::prefix('unitss')->group(function () {
+        Route::get('/', [UnitController::class, 'index']);
+        Route::post('/', [UnitController::class, 'store']);
+        Route::get('/{unit}', [UnitController::class, 'show']);
+        Route::put('/{unit}', [UnitController::class, 'update']);
+        Route::delete('/{unit}', [UnitController::class, 'destroy']);
     });
 
     Route::prefix('topics')->group(function () {

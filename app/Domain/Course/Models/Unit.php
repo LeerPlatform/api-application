@@ -4,7 +4,7 @@ namespace Domain\Course\Models;
 
 use Domain\Model;
 
-class Chapter extends Model
+class Unit extends Model
 {
     public function course()
     {
@@ -13,6 +13,6 @@ class Chapter extends Model
 
     public function sections()
     {
-        return $this->belongsToMany(Section::class, 'chapter_section', 'chapter_id', 'section_id');
+        return $this->belongsToMany(Section::class, 'unit_section', 'unit_id', 'section_id');
     }
 }

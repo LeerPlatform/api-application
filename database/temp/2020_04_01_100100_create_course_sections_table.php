@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCourseSectionsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         // Content Types:
@@ -21,7 +16,7 @@ class CreateCourseSectionsTable extends Migration
         // - quizz          :: Quizz stored in the database.
         // - test           :: Just like a quizz but then it must be than a higher score.
 
-        Schema::create('course_sections', function (Blueprint $table) {
+        Schema::create('course_units', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
             $table->string('title');

@@ -34,7 +34,7 @@ class Course extends JsonResource
             'authors'                => new UserCollection($this->whenLoaded('authors')),
             'topic'                  => new Topic($this->whenLoaded('topic')),
             'tags'                   => $this->whenLoaded('tags'),
-            'chapters'               => $this->whenLoaded('chapters'),
+            'units'               => $this->whenLoaded('units'),
             'created_at'             => $this->created_at,
             'updated_at'             => $this->updated_at,
         ];

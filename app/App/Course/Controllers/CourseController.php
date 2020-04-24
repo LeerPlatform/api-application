@@ -29,8 +29,8 @@ final class CourseController extends Controller
             ])
             ->allowedIncludes([
                 'topic',
-                'chapters',
-                'chapters.sections',
+                'units',
+                'units.sections',
                 'authors',
                 'tags',
             ])
@@ -72,8 +72,8 @@ final class CourseController extends Controller
         $course = QueryBuilder::for(Course::class)
             ->allowedIncludes([
                 'topic',
-                'chapters',
-                'chapters.sections',
+                'units',
+                'units.sections',
                 'authors',
                 'tags',
             ])

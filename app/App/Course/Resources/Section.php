@@ -23,7 +23,7 @@ class Section extends JsonResource
             'title'                  => $this->title,
             'content_type'            => $this->content_type,
             'content'            => $this->content,
-            'chapter'                => new Chapter($this->whenLoaded('chapter')),
+            'unit'                => new Unit($this->whenLoaded('unit')),
             'created_at'             => $this->created_at,
             'updated_at'             => $this->updated_at,
         ];
