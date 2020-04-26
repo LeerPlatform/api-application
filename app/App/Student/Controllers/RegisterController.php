@@ -37,8 +37,8 @@ final class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        $user->addMediaFromUrl('https://picsum.photos/id/237/60/60')
-            ->toMediaCollection('avatars');
+        // $user->addMediaFromUrl('https://picsum.photos/id/237/60/60')
+        //     ->toMediaCollection('avatars');
 
         $user->studentAccount()->save(new StudentAccount());
 
