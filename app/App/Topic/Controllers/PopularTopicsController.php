@@ -26,7 +26,7 @@ final class PopularTopicsController extends Controller
             ->allowedIncludes([
                 'courses',
             ])
-            ->orderBy('unique_views_count')
+            ->orderBy('unique_views_count', 'desc')
             ->get();
 
         return new TopicCollection($topics);
