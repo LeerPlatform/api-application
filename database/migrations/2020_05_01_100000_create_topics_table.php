@@ -14,6 +14,7 @@ class CreateTopicsTable extends Migration
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->string('status')->default('draft');
+            $table->bigInteger('unique_views_count')->default(0);
             $table->timestamps();
         });
     }
