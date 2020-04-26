@@ -2,6 +2,7 @@
 
 use App\Course\Controllers\UnitController;
 use App\Course\Controllers\CourseController;
+use App\Topic\Controllers\PopularTopicsController;
 use App\Topic\Controllers\TopicController;
 use App\User\Controllers\LoginController;
 use App\User\Controllers\LogoutController;
@@ -33,7 +34,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/{course}/enroll', [CourseController::class, 'enroll'])->middleware('auth:api');
     });
 
-    Route::prefix('unitss')->group(function () {
+    Route::prefix('units')->group(function () {
         Route::get('/', [UnitController::class, 'index']);
         Route::post('/', [UnitController::class, 'store']);
         Route::get('/{unit}', [UnitController::class, 'show']);
@@ -48,6 +49,8 @@ Route::prefix('v1')->group(function () {
         Route::put('/{topic}', [TopicController::class, 'update']);
         Route::delete('/{topic}', [TopicController::class, 'destroy']);
     });
+
+    Route::get('/popular-topics', PopularTopicsController::class);
 
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index']);
