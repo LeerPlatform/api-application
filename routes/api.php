@@ -2,6 +2,7 @@
 
 use App\Course\Controllers\UnitController;
 use App\Course\Controllers\CourseController;
+use App\Course\Controllers\PopularCoursesController;
 use App\Topic\Controllers\PopularTopicsController;
 use App\Topic\Controllers\TopicController;
 use App\User\Controllers\LoginController;
@@ -33,6 +34,8 @@ Route::prefix('v1')->group(function () {
         Route::delete('/{course}', [CourseController::class, 'destroy']);
         Route::post('/{course}/enroll', [CourseController::class, 'enroll'])->middleware('auth:api');
     });
+
+    Route::get('/popular-courses', PopularCoursesController::class);
 
     Route::prefix('units')->group(function () {
         Route::get('/', [UnitController::class, 'index']);
