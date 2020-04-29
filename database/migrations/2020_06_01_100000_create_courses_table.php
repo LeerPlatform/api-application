@@ -35,6 +35,8 @@ class CreateCoursesTable extends Migration
             $table->integer('estimated_duration')->nullable();
             $table->date('published_at')->nullable();
 
+            $table->bigInteger('unique_views_count')->default(0);
+
             $table->timestamps();
         });
     }
