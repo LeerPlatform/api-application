@@ -11,7 +11,9 @@ use Domain\Course\Models\Enrollment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\AllowedSort;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Course\QueryBuilder\PopularSort;
 use Support\Controller;
 
 final class CourseController extends Controller
@@ -26,6 +28,9 @@ final class CourseController extends Controller
                 'headline',
                 'description',
                 'description_excerpt',
+            ])
+            ->allowedSorts([
+                AllowedSort::custom('popular', new PopularSort(), '')
             ])
             ->allowedIncludes([
                 'topic',
