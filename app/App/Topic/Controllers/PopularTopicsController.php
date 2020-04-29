@@ -27,7 +27,7 @@ final class PopularTopicsController extends Controller
                 'courses',
             ])
             ->orderBy('unique_views_count', 'desc')
-            ->get();
+            ->jsonPaginate();
 
         return new TopicCollection($topics);
     }
