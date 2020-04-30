@@ -10,6 +10,7 @@ use Domain\Topic\Models\Topic;
 use Domain\User\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Tags\HasTags;
 
 class Course extends Model implements Viewable
@@ -24,7 +25,7 @@ class Course extends Model implements Viewable
         'target_audience' => 'array',
     ];
 
-    public function topic()
+    public function topic(): BelongsTo
     {
         return $this->belongsTo(Topic::class);
     }
@@ -34,10 +35,16 @@ class Course extends Model implements Viewable
         return $this->hasMany(Unit::class, 'course_id');
     }
 
-    public function authors()//: BelongsToMany
+    public function authors(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'course_author', 'course_id', 'user_id');
         // ->withTimestamps();
+    }
+
+    public function students(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'course_enrolled', 'course_id', 'user_id')
+            ->withTimestamps();
     }
 
     public function getUniqueViewsCount()

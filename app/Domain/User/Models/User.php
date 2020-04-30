@@ -11,6 +11,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Domain\Student\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable implements JWTSubject, HasMedia
 {
@@ -28,7 +29,7 @@ class User extends Authenticatable implements JWTSubject, HasMedia
         'last_login_at'     => 'datetime',
     ];
 
-    public function studentAccount()
+    public function studentAccount(): HasOne
     {
         return $this->hasOne(StudentAccount::class);
     }

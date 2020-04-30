@@ -7,12 +7,13 @@ use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Support\Period;
 use Domain\Course\Models\Course;
 use Domain\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Topic extends Model implements Viewable
 {
     use InteractsWithViews;
 
-    public function courses()
+    public function courses(): HasMany
     {
         return $this->hasMany(Course::class);
     }

@@ -35,6 +35,7 @@ class Course extends JsonResource
             'topic'                  => new Topic($this->whenLoaded('topic')),
             'tags'                   => $this->whenLoaded('tags'),
             'units'               => $this->whenLoaded('units'),
+            'students'               => $this->whenLoaded('students'),
             'created_at'             => $this->created_at,
             'updated_at'             => $this->updated_at,
         ];
