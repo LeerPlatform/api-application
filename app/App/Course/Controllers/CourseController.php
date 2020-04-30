@@ -38,6 +38,7 @@ final class CourseController extends Controller
                 'units.sections',
                 'authors',
                 'tags',
+                'students',
             ])
             ->get();
 
