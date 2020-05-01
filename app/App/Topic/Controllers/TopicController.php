@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Support\Controller;
+use App\Topic\QueryBuilder\PopularSort;
 
 final class TopicController extends Controller
 {
@@ -22,6 +23,9 @@ final class TopicController extends Controller
                 AllowedFilter::exact('slug'),
                 'display_name',
                 'description',
+            ])
+            ->allowedSorts([
+                AllowedSort::custom('popular', new PopularSort(), '')
             ])
             ->allowedIncludes([
                 'courses',
