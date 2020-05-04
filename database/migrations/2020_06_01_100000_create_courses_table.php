@@ -12,13 +12,10 @@ class CreateCoursesTable extends Migration
             $table->id();
 
             $table->integer('topic_id')->unsigned();
-            // $table->foreign('topic_id')
-            //     ->references('id')->on('topics')
-            //     ->onDelete('cascade');
 
             $table->string('slug')->unique();
 
-            // Course content
+            // Content
             $table->string('title')->nullable();
             $table->string('headline')->nullable();
             $table->text('description')->nullable();
@@ -26,12 +23,10 @@ class CreateCoursesTable extends Migration
             $table->json('learning_points')->nullable();
             $table->json('target_audience')->nullable();
 
-            // Course meta
+            // Meta
             $table->string('language')->nullable();
             $table->string('level')->nullable();
-            $table->string('status')
-                ->nullable()
-                ->default('draft');
+            $table->string('status')->nullable()->default('draft');
             $table->integer('estimated_duration')->nullable();
             $table->date('published_at')->nullable();
 
@@ -39,5 +34,9 @@ class CreateCoursesTable extends Migration
 
             $table->timestamps();
         });
+
+        // $table->foreign('topic_id')
+        //     ->references('id')->on('topics')
+        //     ->onDelete('cascade');
     }
 }
