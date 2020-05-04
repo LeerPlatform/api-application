@@ -9,6 +9,7 @@ use Domain\Topic\Models\Topic;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\AllowedSort;
 use Spatie\QueryBuilder\QueryBuilder;
 use Support\Controller;
 use App\Topic\QueryBuilder\PopularSort;
@@ -30,7 +31,7 @@ final class TopicController extends Controller
             ->allowedIncludes([
                 'courses',
             ])
-            ->get();
+            ->jsonPaginate();
 
         return new TopicCollection($topics);
     }
