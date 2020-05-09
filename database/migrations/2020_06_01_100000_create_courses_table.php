@@ -21,12 +21,12 @@ class CreateCoursesTable extends Migration
             $table->text('description')->nullable();
             $table->text('description_excerpt')->nullable();
             $table->json('learning_points')->nullable();
-            $table->json('target_audience')->nullable();
+            // $table->json('target_audience')->nullable();
 
             // Meta
             $table->string('language')->nullable();
-            $table->string('level')->nullable();
-            $table->string('status')->nullable()->default('draft');
+            // $table->string('level')->nullable();
+            // $table->string('status')->nullable()->default('draft');
             $table->integer('estimated_duration')->nullable();
             $table->date('published_at')->nullable();
 
