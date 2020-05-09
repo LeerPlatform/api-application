@@ -18,10 +18,10 @@ class Topic extends JsonResource
     {
         return [
             'id'                 => $this->id,
-            'display_name'       => $this->display_name,
             'slug'               => $this->slug,
-            'description'        => $this->description,
-            'status'             => $this->status,
+            'display_name'       => $this->getTranslations('display_name'),
+            'description'        => $this->getTranslations('description'),
+            // 'status'             => $this->status,
             'unique_views_count' => $this->getUniqueViewsCount(),
             'courses'            => new CourseCollection($this->whenLoaded('courses')),
         ];
