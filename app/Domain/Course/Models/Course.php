@@ -12,16 +12,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Tags\HasTags;
+use Spatie\Translatable\HasTranslations;
 
 class Course extends Model implements Viewable
 {
     use InteractsWithViews;
     use HasTags;
+    use HasTranslations;
 
     protected $table = 'courses';
 
+    public $translatable = [
+        'title',
+        'headline',
+        'description',
+        'description_excerpt',
+        'learning_points',
+    ];
+
     protected $casts = [
-        'learning_points' => 'array',
         'target_audience' => 'array',
     ];
 
