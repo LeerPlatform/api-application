@@ -21,30 +21,32 @@ class CoursesTableSeeder extends Seeder
          */
         $course = new Course();
         $course->slug = 'svg-gevorderde-cursus';
-        $course->title = 'SVG gevorderde cursus';
-        $course->headline = 'Leer de basisprincipes van SVG';
-        $course->description = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium velit leo, vitae congue nisi ullamcorper et. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Morbi eu tempus est. Phasellus sed justo sodales, ornare nisl sed, viverra dolor. Suspendisse eget mi auctor elit vestibulum volutpat. Curabitur auctor dictum est, ac efficitur sem. Maecenas et faucibus turpis, nec tempor mauris. Praesent sagittis dapibus neque ut aliquam. Nam dapibus, arcu sit amet laoreet eleifend, enim ante euismod diam, at lacinia enim leo et sem. Donec quam eros, dignissim vel vestibulum eu, elementum et dolor. Aliquam hendrerit tellus sit amet ante molestie fermentum. Nulla et sem vitae augue finibus fringilla vitae vel ligula. Maecenas leo quam, molestie tincidunt condimentum quis, sodales ac massa.</p>';
-        $course->description_excerpt = 'In deze cursus leer je de basisbeginselen van PHP. Je weet na afloop wat een conditional statement, for-loop, class en variable is.';
-        $course->learning_points = [
+        $course->setTranslation('title', 'nl', 'SVG gevorderde cursus');
+        $course->setTranslation('headline', 'nl', 'Leer de basisprincipes van SVG');
+        $course->setTranslation('description', 'nl', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium velit leo, vitae congue nisi ullamcorper et. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Morbi eu tempus est. Phasellus sed justo sodales, ornare nisl sed, viverra dolor. Suspendisse eget mi auctor elit vestibulum volutpat. Curabitur auctor dictum est, ac efficitur sem. Maecenas et faucibus turpis, nec tempor mauris. Praesent sagittis dapibus neque ut aliquam. Nam dapibus, arcu sit amet laoreet eleifend, enim ante euismod diam, at lacinia enim leo et sem. Donec quam eros, dignissim vel vestibulum eu, elementum et dolor. Aliquam hendrerit tellus sit amet ante molestie fermentum. Nulla et sem vitae augue finibus fringilla vitae vel ligula. Maecenas leo quam, molestie tincidunt condimentum quis, sodales ac massa.</p>');
+        $course->setTranslation('description_excerpt', 'nl', 'In deze cursus leer je de basisbeginselen van PHP. Je weet na afloop wat een conditional statement, for-loop, class en variable is.');
+        $course->setTranslation('learning_points', 'nl', [
             'Variables',
             'Operators',
             'Conditionals',
             'Comments',
             'PHP on the Web',
-        ];
-        $course->target_audience = [
-            'MBO-ers',
-            'Beginners',
-            'Hobbiesten',
-        ];
+        ]);
+
+        // $course->target_audience = [
+        //     'MBO-ers',
+        //     'Beginners',
+        //     'Hobbiesten',
+        // ];
         $course->language = 'nl';
-        $course->level = 'gevorderde';
+        // $course->level = 'gevorderde';
         $course->estimated_duration = 12;
-        $course->status = 'draft';
+        // $course->status = 'draft';
         // $course
         //     ->addMedia(storage_path('app/public/defaults/example-car-2048x1152.png'))
         //     ->preservingOriginal()
         //     ->toMediaCollection('images');
+        $course->published_at = now();
         $course->created_at = now();
         $course->updated_at = now()->addWeeks(1);
 
@@ -126,30 +128,31 @@ class CoursesTableSeeder extends Seeder
          */
         $course = new Course();
         $course->slug = 'php-beginners-cursus';
-        $course->title = 'PHP beginners cursus';
-        $course->headline = 'PHP voor beginners: leer alles wat je nodig hebt om een professionele PHP ontwikkelaar te worden met praktische oefeningen &amp; projects.';
-        $course->description = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium velit leo, vitae congue nisi ullamcorper et. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Morbi eu tempus est. Phasellus sed justo sodales, ornare nisl sed, viverra dolor. Suspendisse eget mi auctor elit vestibulum volutpat. Curabitur auctor dictum est, ac efficitur sem. Maecenas et faucibus turpis, nec tempor mauris. Praesent sagittis dapibus neque ut aliquam. Nam dapibus, arcu sit amet laoreet eleifend, enim ante euismod diam, at lacinia enim leo et sem. Donec quam eros, dignissim vel vestibulum eu, elementum et dolor. Aliquam hendrerit tellus sit amet ante molestie fermentum. Nulla et sem vitae augue finibus fringilla vitae vel ligula. Maecenas leo quam, molestie tincidunt condimentum quis, sodales ac massa.</p>';
-        $course->description_excerpt = 'In deze cursus leer je de basisbeginselen van PHP. Je weet na afloop wat een conditional statement, for-loop, class en variable is.';
-        $course->learning_points = [
+        $course->setTranslation('title', 'nl', 'PHP beginners cursus');
+        $course->setTranslation('headline', 'nl', 'Leer de basisprincipes van SVG');
+        $course->setTranslation('description', 'nl', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium velit leo, vitae congue nisi ullamcorper et. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Morbi eu tempus est. Phasellus sed justo sodales, ornare nisl sed, viverra dolor. Suspendisse eget mi auctor elit vestibulum volutpat. Curabitur auctor dictum est, ac efficitur sem. Maecenas et faucibus turpis, nec tempor mauris. Praesent sagittis dapibus neque ut aliquam. Nam dapibus, arcu sit amet laoreet eleifend, enim ante euismod diam, at lacinia enim leo et sem. Donec quam eros, dignissim vel vestibulum eu, elementum et dolor. Aliquam hendrerit tellus sit amet ante molestie fermentum. Nulla et sem vitae augue finibus fringilla vitae vel ligula. Maecenas leo quam, molestie tincidunt condimentum quis, sodales ac massa.</p>');
+        $course->setTranslation('description_excerpt', 'nl', 'In deze cursus leer je de basisbeginselen van PHP. Je weet na afloop wat een conditional statement, for-loop, class en variable is.');
+        $course->setTranslation('learning_points', 'nl', [
             'Variables',
             'Operators',
             'Conditionals',
             'Comments',
             'PHP on the Web',
-        ];
-        $course->target_audience = [
-            'MBO-ers',
-            'Beginners',
-            'Hobbiesten',
-        ];
+        ]);
+        // $course->target_audience = [
+        //     'MBO-ers',
+        //     'Beginners',
+        //     'Hobbiesten',
+        // ];
         $course->language = 'nl';
-        $course->level = 'beginner';
+        // $course->level = 'beginner';
         $course->estimated_duration = 6;
-        $course->status = 'publish';
+        // $course->status = 'publish';
         // $course
         //     ->addMedia(storage_path('app/public/defaults/example-man-tablet-2048x1152.png'))
         //     ->preservingOriginal()
         //     ->toMediaCollection('images');
+        $course->published_at = now();
         $course->created_at = now()->subWeeks(2);
         $course->updated_at = now()->subWeeks(2)->addWeeks(1);
 

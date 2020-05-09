@@ -16,10 +16,10 @@ class CreateCoursesTable extends Migration
             $table->string('slug')->unique();
 
             // Content
-            $table->string('title')->nullable();
-            $table->string('headline')->nullable();
-            $table->text('description')->nullable();
-            $table->text('description_excerpt')->nullable();
+            $table->json('title')->nullable();
+            $table->json('headline')->nullable();
+            $table->json('description')->nullable();
+            $table->json('description_excerpt')->nullable();
             $table->json('learning_points')->nullable();
             // $table->json('target_audience')->nullable();
 
