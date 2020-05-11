@@ -39,6 +39,7 @@ final class CourseController extends Controller
                 'authors',
                 'tags',
                 'students',
+                'language',
             ])
             ->get();
 
@@ -82,6 +83,7 @@ final class CourseController extends Controller
                 'units.sections',
                 'authors',
                 'tags',
+                'language',
             ])
             ->where('id', $id)
             ->first();
