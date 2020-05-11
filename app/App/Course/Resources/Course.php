@@ -27,7 +27,6 @@ class Course extends JsonResource
             'learning_points'        => $this->getTranslations('learning_points'),
             // 'target_audience'        => $this->target_audience,
             // 'level'                  => $this->level,
-            'language'               => $this->language,
             'estimated_duration'     => $this->estimated_duration,
             'unique_views_count'     => $this->getUniqueViewsCount(),
             'published_at'           => $this->published_at,
@@ -36,6 +35,7 @@ class Course extends JsonResource
             'tags'                   => $this->whenLoaded('tags'),
             'units'                  => $this->whenLoaded('units'),
             'students'               => $this->whenLoaded('students'),
+            'language'               => $this->whenLoaded('language'),
             'created_at'             => $this->created_at,
             'updated_at'             => $this->updated_at,
         ];

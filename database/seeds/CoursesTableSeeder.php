@@ -3,6 +3,7 @@
 use Domain\Course\Models\Unit;
 use Domain\Course\Models\Course;
 use Domain\Course\Models\Section;
+use Domain\Language\Models\Language;
 use Domain\Topic\Models\Topic;
 use Illuminate\Database\Seeder;
 use Spatie\Tags\Tag;
@@ -38,7 +39,6 @@ class CoursesTableSeeder extends Seeder
         //     'Beginners',
         //     'Hobbiesten',
         // ];
-        $course->language = 'nl';
         // $course->level = 'gevorderde';
         $course->estimated_duration = 12;
         // $course->status = 'draft';
@@ -49,6 +49,9 @@ class CoursesTableSeeder extends Seeder
         $course->published_at = now();
         $course->created_at = now();
         $course->updated_at = now()->addWeeks(1);
+
+        // Language
+        $course->language()->associate(Language::where('locale', 'nl')->first());
 
         // Topic
         $course->topic()->associate(5);
@@ -144,7 +147,7 @@ class CoursesTableSeeder extends Seeder
         //     'Beginners',
         //     'Hobbiesten',
         // ];
-        $course->language = 'nl';
+        // $course->language = 'nl';
         // $course->level = 'beginner';
         $course->estimated_duration = 6;
         // $course->status = 'publish';
@@ -155,6 +158,9 @@ class CoursesTableSeeder extends Seeder
         $course->published_at = now();
         $course->created_at = now()->subWeeks(2);
         $course->updated_at = now()->subWeeks(2)->addWeeks(1);
+
+        // Language
+        $course->language()->associate(Language::where('locale', 'nl')->first());
 
         // Topic
         $course->topic()->associate(5);
