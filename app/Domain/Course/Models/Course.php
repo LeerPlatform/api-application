@@ -8,6 +8,7 @@ use CyrildeWit\EloquentViewable\Support\Period;
 use Domain\Model;
 use Domain\Topic\Models\Topic;
 use Domain\User\Models\User;
+use Domain\Language\Models\Language;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -54,6 +55,11 @@ class Course extends Model implements Viewable
     {
         return $this->belongsToMany(User::class, 'course_enrolled', 'course_id', 'user_id')
             ->withTimestamps();
+    }
+
+    public function language(): BelongsTo
+    {
+        return $this->belongsTo(Language::class);
     }
 
     public function getUniqueViewsCount()

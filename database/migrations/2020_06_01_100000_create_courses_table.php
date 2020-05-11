@@ -24,11 +24,12 @@ class CreateCoursesTable extends Migration
             // $table->json('target_audience')->nullable();
 
             // Meta
-            $table->string('language')->nullable();
             // $table->string('level')->nullable();
             // $table->string('status')->nullable()->default('draft');
             $table->integer('estimated_duration')->nullable();
             $table->date('published_at')->nullable();
+
+            $table->integer('language_id')->unsigned()->nullable();
 
             $table->bigInteger('unique_views_count')->default(0);
 
