@@ -6,6 +6,32 @@
 
 This repository contains the RESTful API of the Leer Platform.
 
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/LeerPlatform/api-application.git
+```
+
+Install dependencies
+
+```bash
+composer install
+```
+
+Set application key
+
+```bash
+php artisan key:generate
+```
+
+Create storage link
+
+```bash
+php artisan storage:link
+```
+
 ## Credits
 
 * **Cyril de Wit** - _Initial work_ - [cyrildewit](https://github.com/cyrildewit)
