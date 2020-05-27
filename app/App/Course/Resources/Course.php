@@ -35,6 +35,7 @@ class Course extends JsonResource
             'tags'                   => $this->whenLoaded('tags'),
             'units'                  => $this->whenLoaded('units'),
             'students'               => $this->whenLoaded('students'),
+            'students_count'         => $this->students_count, // Look if it's possible to only load when count att is available
             'language'               => $this->whenLoaded('language'),
             'created_at'             => $this->created_at,
             'updated_at'             => $this->updated_at,

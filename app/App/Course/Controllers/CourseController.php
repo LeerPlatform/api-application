@@ -11,6 +11,7 @@ use Domain\Course\Models\Enrollment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\AllowedInclude;
 use Spatie\QueryBuilder\AllowedSort;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Course\QueryBuilder\PopularSort;
@@ -40,6 +41,7 @@ final class CourseController extends Controller
                 'tags',
                 'students',
                 'language',
+                AllowedInclude::count('studentsCount'),
             ])
             ->get();
 
