@@ -6,7 +6,7 @@ use App\User\Resources\User as UserResource;
 use Illuminate\Support\Facades\Auth;
 use Support\Controller;
 
-final class AuthenticatedUserController extends Controller
+final class CurrentUserController extends Controller
 {
     public function __invoke()
     {

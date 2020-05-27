@@ -8,7 +8,7 @@ use App\Topic\Controllers\TopicController;
 use App\User\Controllers\LoginController;
 use App\User\Controllers\LogoutController;
 use App\Student\Controllers\RegisterController;
-use App\User\Controllers\AuthenticatedUserController;
+use App\User\Controllers\CurrentUserController;
 use App\User\Controllers\UserController;
 use App\View\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +18,7 @@ Route::prefix('v1')->group(function () {
         Route::prefix('user')->group(function () {
             Route::post('login', [LoginController::class, 'login'])->middleware('guest:api');
             Route::post('logout', LogoutController::class, 'logout')->middleware('auth:api');
-            Route::get('user', AuthenticatedUserController::class)->middleware('auth:api');
+            Route::get('current', CurrentUserController::class)->middleware('auth:api');
         });
 
         Route::prefix('student')->group(function () {
