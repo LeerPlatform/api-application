@@ -14,9 +14,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Course extends Model implements Viewable
+class Course extends Model implements HasMedia, Viewable
 {
+    use InteractsWithMedia;
     use InteractsWithViews;
     use HasTags;
     use HasTranslations;
@@ -68,5 +72,18 @@ class Course extends Model implements Viewable
             ->period(Period::subMonths(1))
             ->unique()
             ->count();
+    }
+
+    // public function registerMediaCollections(): void
+    // {
+    //     $this->addMediaCollection('thumbnails');
+    // }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumbnail')
+              ->width(320)
+              ->height(180);
+            //   ->sharpen(10);
     }
 }
