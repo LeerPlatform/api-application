@@ -61,9 +61,20 @@ class CoursesTableSeeder extends Seeder
         // Tags
         $tag_svg = Tag::findOrCreate('SVG', 'courseTag');
         $course->attachTag($tag_svg);
+        $course->attachTag(Tag::findOrCreate('PHP', 'courseTag'));
+        $course->attachTag(Tag::findOrCreate('CSS', 'courseTag'));
+        $course->attachTag(Tag::findOrCreate('HTML', 'courseTag'));
+        $course->attachTag(Tag::findOrCreate('Schrijven', 'courseTag'));
 
         // Authors
         $course->authors()->attach(1);
+        $course->authors()->attach(2);
+        $course->authors()->attach(3);
+
+        // Thumbnail
+        $course->addMedia(resource_path('seeds/25-320x180.jpg'))
+            ->preservingOriginal()
+            ->toMediaCollection('thumbnails');
 
         // The units and sections
         $course_unit = new Unit();
@@ -173,6 +184,11 @@ class CoursesTableSeeder extends Seeder
 
         // The Authors
         $course->authors()->attach(1);
+
+        // Thumbnail
+        $course->addMedia(resource_path('seeds/203-320x180.jpg'))
+            ->preservingOriginal()
+            ->toMediaCollection('thumbnails');
 
         // The units and sections
         $course_unit = new Unit();
@@ -296,6 +312,11 @@ class CoursesTableSeeder extends Seeder
         // Authors
         $course->authors()->attach(1);
 
+        // Thumbnail
+        $course->addMedia(resource_path('seeds/204-320x180.jpg'))
+            ->preservingOriginal()
+            ->toMediaCollection('thumbnails');
+
         // The units and sections
         $course_unit = new Unit();
         $course_unit->slug = 'welkom-op-de-cursus';
@@ -405,6 +426,11 @@ class CoursesTableSeeder extends Seeder
         // Authors
         $course->authors()->attach(1);
 
+        // Thumbnail
+        $course->addMedia(resource_path('seeds/26-320x180.jpg'))
+            ->preservingOriginal()
+            ->toMediaCollection('thumbnails');
+
         // The units and sections
         $course_unit = new Unit();
         $course_unit->slug = 'welkom-op-de-cursus';
@@ -513,6 +539,11 @@ class CoursesTableSeeder extends Seeder
 
         // Authors
         $course->authors()->attach(1);
+
+        // Thumbnail
+        $course->addMedia(resource_path('seeds/27-320x180.jpg'))
+            ->preservingOriginal()
+            ->toMediaCollection('thumbnails');
 
         // The units and sections
         $course_unit = new Unit();
