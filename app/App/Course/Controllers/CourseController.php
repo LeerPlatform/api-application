@@ -15,6 +15,7 @@ use Spatie\QueryBuilder\AllowedInclude;
 use Spatie\QueryBuilder\AllowedSort;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Course\QueryBuilder\PopularSort;
+use App\Course\QueryBuilder\FilterSearchableFields;
 use Support\Controller;
 
 final class CourseController extends Controller
@@ -29,6 +30,7 @@ final class CourseController extends Controller
                 'headline',
                 'description',
                 'description_excerpt',
+                AllowedFilter::custom('query', FilterSearchableFields::searchOn('title', 'headline', 'description', 'description_excerpt'))
             ])
             ->allowedSorts([
                 AllowedSort::custom('popular', new PopularSort(), '')
