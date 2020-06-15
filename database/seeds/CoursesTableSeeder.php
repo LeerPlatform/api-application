@@ -3,6 +3,7 @@
 use Domain\Course\Models\Unit;
 use Domain\Course\Models\Course;
 use Domain\Course\Models\Section;
+use Domain\Course\Enums\CourseLevel;
 use Domain\Language\Models\Language;
 use Domain\Topic\Models\Topic;
 use Illuminate\Database\Seeder;
@@ -25,7 +26,7 @@ class CoursesTableSeeder extends Seeder
         $course->setTranslation('title', 'nl', 'SVG gevorderde cursus');
         $course->setTranslation('headline', 'nl', 'Leer de basisprincipes van SVG');
         $course->setTranslation('description', 'nl', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium velit leo, vitae congue nisi ullamcorper et. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Morbi eu tempus est. Phasellus sed justo sodales, ornare nisl sed, viverra dolor. Suspendisse eget mi auctor elit vestibulum volutpat. Curabitur auctor dictum est, ac efficitur sem. Maecenas et faucibus turpis, nec tempor mauris. Praesent sagittis dapibus neque ut aliquam. Nam dapibus, arcu sit amet laoreet eleifend, enim ante euismod diam, at lacinia enim leo et sem. Donec quam eros, dignissim vel vestibulum eu, elementum et dolor. Aliquam hendrerit tellus sit amet ante molestie fermentum. Nulla et sem vitae augue finibus fringilla vitae vel ligula. Maecenas leo quam, molestie tincidunt condimentum quis, sodales ac massa.</p>');
-        $course->setTranslation('description_excerpt', 'nl', 'In deze cursus leer je de basisbeginselen van PHP. Je weet na afloop wat een conditional statement, for-loop, class en variable is.');
+        $course->setTranslation('description_excerpt', 'nl', 'In deze cursus leer je de basisbeginselen van svg. Je weet na afloop wat een conditional statement, for-loop, class en variable is.');
         $course->setTranslation('learning_points', 'nl', [
             'Variables',
             'Operators',
@@ -39,7 +40,7 @@ class CoursesTableSeeder extends Seeder
         //     'Beginners',
         //     'Hobbiesten',
         // ];
-        // $course->level = 'gevorderde';
+        $course->level = CourseLevel::Beginner;
         $course->estimated_duration = 12;
         // $course->status = 'draft';
         // $course
@@ -159,7 +160,7 @@ class CoursesTableSeeder extends Seeder
         //     'Hobbiesten',
         // ];
         // $course->language = 'nl';
-        // $course->level = 'beginner';
+        $course->level = CourseLevel::Beginner;
         $course->estimated_duration = 6;
         // $course->status = 'publish';
         // $course
@@ -286,7 +287,7 @@ class CoursesTableSeeder extends Seeder
         //     'Beginners',
         //     'Hobbiesten',
         // ];
-        // $course->level = 'gevorderde';
+        $course->level = CourseLevel::Intermediate;
         $course->estimated_duration = 12;
         // $course->status = 'draft';
         // $course
@@ -400,7 +401,7 @@ class CoursesTableSeeder extends Seeder
         //     'Beginners',
         //     'Hobbiesten',
         // ];
-        // $course->level = 'gevorderde';
+        $course->level = CourseLevel::Expert;
         $course->estimated_duration = 12;
         // $course->status = 'draft';
         // $course
@@ -500,7 +501,7 @@ class CoursesTableSeeder extends Seeder
         $course->setTranslation('title', 'nl', 'Photoshop voor beginners');
         $course->setTranslation('headline', 'nl', 'Leer hoe je foto\'s kunt bewerken met Photosho');
         $course->setTranslation('description', 'nl', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium velit leo, vitae congue nisi ullamcorper et. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Morbi eu tempus est. Phasellus sed justo sodales, ornare nisl sed, viverra dolor. Suspendisse eget mi auctor elit vestibulum volutpat. Curabitur auctor dictum est, ac efficitur sem. Maecenas et faucibus turpis, nec tempor mauris. Praesent sagittis dapibus neque ut aliquam. Nam dapibus, arcu sit amet laoreet eleifend, enim ante euismod diam, at lacinia enim leo et sem. Donec quam eros, dignissim vel vestibulum eu, elementum et dolor. Aliquam hendrerit tellus sit amet ante molestie fermentum. Nulla et sem vitae augue finibus fringilla vitae vel ligula. Maecenas leo quam, molestie tincidunt condimentum quis, sodales ac massa.</p>');
-        $course->setTranslation('description_excerpt', 'nl', 'In deze cursus leer je de basisbeginselen van PHP. Je weet na afloop wat een conditional statement, for-loop, class en variable is. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+        $course->setTranslation('description_excerpt', 'nl', 'In deze cursus leer je de basisbeginselen van photoshop. Je weet na afloop wat een conditional statement, for-loop, class en variable is. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
         $course->setTranslation('learning_points', 'nl', [
             'Variables',
             'Operators',
@@ -514,7 +515,7 @@ class CoursesTableSeeder extends Seeder
         //     'Beginners',
         //     'Hobbiesten',
         // ];
-        // $course->level = 'gevorderde';
+        $course->level = null;
         $course->estimated_duration = 12;
         // $course->status = 'draft';
         // $course

@@ -24,7 +24,7 @@ class CreateCoursesTable extends Migration
             // $table->json('target_audience')->nullable();
 
             // Meta
-            // $table->string('level')->nullable();
+            $table->string('level')->nullable();
             // $table->string('status')->nullable()->default('draft');
             $table->integer('estimated_duration')->nullable();
             $table->date('published_at')->nullable();

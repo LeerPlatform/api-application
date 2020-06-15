@@ -30,9 +30,12 @@ final class CourseController extends Controller
                 'headline',
                 'description',
                 'description_excerpt',
-                AllowedFilter::custom('query', FilterSearchableFields::searchOn('title', 'headline', 'description', 'description_excerpt'))
+                AllowedFilter::custom('query', FilterSearchableFields::searchOn('title', 'headline', 'description', 'description_excerpt')),
+                AllowedFilter::exact('topic.id'),
+                AllowedFilter::exact('level'),
             ])
             ->allowedSorts([
+                'created_at',
                 AllowedSort::custom('popular', new PopularSort(), '')
             ])
             ->allowedIncludes([
@@ -45,7 +48,7 @@ final class CourseController extends Controller
                 'language',
                 AllowedInclude::count('studentsCount'),
             ])
-            ->get();
+            ->jsonPaginate();
 
         return new CourseCollection($courses);
     }
