@@ -2,6 +2,7 @@
 
 use App\Course\Controllers\UnitController;
 use App\Course\Controllers\CourseController;
+use App\Language\Controllers\LanguageController;
 use App\Course\Controllers\PopularCoursesController;
 use App\Topic\Controllers\PopularTopicsController;
 use App\Topic\Controllers\TopicController;
@@ -49,6 +50,11 @@ Route::prefix('v1')->group(function () {
         Route::get('/{topic}', [TopicController::class, 'show']);
         Route::put('/{topic}', [TopicController::class, 'update']);
         Route::delete('/{topic}', [TopicController::class, 'destroy']);
+    });
+
+    Route::prefix('languages')->group(function () {
+        Route::get('/', [LanguageController::class, 'index']);
+        Route::get('/{id}', [LanguageController::class, 'show']);
     });
 
     Route::prefix('users')->group(function () {
