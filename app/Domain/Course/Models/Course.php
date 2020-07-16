@@ -17,13 +17,16 @@ use Spatie\Translatable\HasTranslations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Rennokki\Rating\Traits\CanBeRated;
+use Rennokki\Rating\Contracts\Rateable;
 
-class Course extends Model implements HasMedia, Viewable
+class Course extends Model implements HasMedia, Viewable, Rateable
 {
     use InteractsWithMedia;
     use InteractsWithViews;
     use HasTags;
     use HasTranslations;
+    use CanBeRated;
 
     protected $table = 'courses';
 

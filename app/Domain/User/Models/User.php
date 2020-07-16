@@ -12,11 +12,14 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Domain\Student\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Rennokki\Rating\Traits\CanRate;
+use Rennokki\Rating\Contracts\Rater;
 
-class User extends Authenticatable implements JWTSubject, HasMedia
+class User extends Authenticatable implements JWTSubject, HasMedia, Rater
 {
     use Notifiable;
     use InteractsWithMedia;
+    use CanRate;
 
     protected $guarded = [];
 

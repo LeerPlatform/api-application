@@ -5,6 +5,7 @@ use App\Course\Controllers\CourseController;
 use App\Language\Controllers\LanguageController;
 use App\Course\Controllers\PopularCoursesController;
 use App\Topic\Controllers\PopularTopicsController;
+use App\Course\Controllers\CourseReviewController;
 use App\Topic\Controllers\TopicController;
 use App\User\Controllers\LoginController;
 use App\User\Controllers\LogoutController;
@@ -34,6 +35,14 @@ Route::prefix('v1')->group(function () {
         Route::put('/{course}', [CourseController::class, 'update']);
         Route::delete('/{course}', [CourseController::class, 'destroy']);
         Route::post('/{course}/enroll', [CourseController::class, 'enroll'])->middleware('auth:api');
+
+        Route::prefix('{id}/reviews')->group(function () {
+            Route::get('/', [CourseReviewController::class, 'index']);
+            // Route::post('/', [CourseReviewController::class, 'store']);
+            Route::get('/{review}', [CourseReviewController::class, 'show']);
+            // Route::put('/{review}', [CourseReviewController::class, 'update']);
+            // Route::delete('/{review}', [CourseReviewController::class, 'destroy']);
+        });
     });
 
     Route::prefix('units')->group(function () {
