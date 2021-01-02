@@ -1,7 +1,7 @@
 {
-    "name": "cyrildewit/dnh-leer-platform",
+    "name": "ecoscanner/api-application",
     "type": "project",
-    "description": "Source code for dnh-leer-platform.",
+    "description": "Source code for EcoScaner REST API.",
     "require": {
         "php": "^7.2.5",
         "bensampo/laravel-enum": "^1.38",
