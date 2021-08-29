@@ -11,6 +11,6 @@ class PopularSort implements Sort
     {
         $direction = $descending ? 'DESC' : 'ASC';
 
-        $query->orderBy('unique_views_count');
+        $query->orderBy('unique_views_count', $direction);
     }
 }

@@ -3,8 +3,6 @@
 use App\Course\Controllers\UnitController;
 use App\Course\Controllers\CourseController;
 use App\Language\Controllers\LanguageController;
-use App\Course\Controllers\PopularCoursesController;
-use App\Topic\Controllers\PopularTopicsController;
 use App\Topic\Controllers\TopicController;
 use App\User\Controllers\LoginController;
 use App\User\Controllers\LogoutController;
@@ -18,7 +16,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('auth')->group(function () {
         Route::prefix('user')->group(function () {
             Route::post('login', [LoginController::class, 'login'])->middleware('guest:api');
-            Route::post('logout', LogoutController::class, 'logout')->middleware('auth:api');
+            Route::post('logout', [LogoutController::class, 'logout'])->middleware('auth:api');
             Route::get('current', CurrentUserController::class)->middleware('auth:api');
         });
 

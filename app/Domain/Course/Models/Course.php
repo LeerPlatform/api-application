@@ -12,6 +12,7 @@ use Domain\Language\Models\Language;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 use Spatie\MediaLibrary\HasMedia;
@@ -27,7 +28,7 @@ class Course extends Model implements HasMedia, Viewable
 
     protected $table = 'courses';
 
-    public $translatable = [
+    public array $translatable = [
         'title',
         'headline',
         'description',
@@ -66,7 +67,7 @@ class Course extends Model implements HasMedia, Viewable
         return $this->belongsTo(Language::class);
     }
 
-    public function getUniqueViewsCount()
+    public function getUniqueViewsCount(): int
     {
         return views($this)
             ->period(Period::subMonths(1))
@@ -79,11 +80,14 @@ class Course extends Model implements HasMedia, Viewable
     //     $this->addMediaCollection('thumbnails');
     // }
 
+    /**
+     * @throws InvalidManipulation
+     */
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumbnail')
-              ->width(320)
-              ->height(180);
-            //   ->sharpen(10);
+            ->width(320)
+            ->height(180);
+        //   ->sharpen(10);
     }
 }

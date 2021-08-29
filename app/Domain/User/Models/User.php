@@ -5,6 +5,7 @@ namespace Domain\User\Models;
 use Domain\Course\Models\Course;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -41,6 +42,9 @@ class User extends Authenticatable implements JWTSubject, HasMedia
             ->withTimestamps();
     }
 
+    /**
+     * @throws InvalidManipulation
+     */
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
@@ -48,22 +52,12 @@ class User extends Authenticatable implements JWTSubject, HasMedia
             ->height(50);
     }
 
-    /**
-     * Get the identifier that will be stored in the subject claim of the JWT.
-     *
-     * @return mixed
-     */
-    public function getJWTIdentifier()
+    public function getJWTIdentifier(): mixed
     {
         return $this->getKey();
     }
 
-    /**
-     * Return a key value array, containing any custom claims to be added to the JWT.
-     *
-     * @return array
-     */
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
     }

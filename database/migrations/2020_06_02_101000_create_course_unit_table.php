@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCourseUnitTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('course_unit', function (Blueprint $table) {
             $table->id();

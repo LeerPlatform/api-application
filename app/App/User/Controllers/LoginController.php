@@ -2,8 +2,10 @@
 
 namespace App\User\Controllers;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Support\Controller;
@@ -12,7 +14,7 @@ final class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected function attemptLogin(Request $request)
+    protected function attemptLogin(Request $request): bool
     {
         $token = $this->guard()->attempt($this->credentials($request));
 
@@ -20,14 +22,12 @@ final class LoginController extends Controller
             return false;
         }
 
-        $user = $this->guard()->user();
-
         $this->guard()->setToken($token);
 
         return true;
     }
 
-    protected function sendLoginResponse(Request $request)
+    protected function sendLoginResponse(Request $request): JsonResponse
     {
         $this->clearLoginAttempts($request);
 
@@ -43,8 +43,6 @@ final class LoginController extends Controller
 
     protected function sendFailedLoginResponse(Request $request)
     {
-        $user = $this->guard()->user();
-
         throw ValidationException::withMessages([
             $this->username() => [trans('auth.failed')],
         ]);
@@ -55,7 +53,7 @@ final class LoginController extends Controller
         $this->guard()->logout();
     }
 
-    protected function guard()
+    protected function guard(): Guard
     {
         return Auth::guard('api');
     }

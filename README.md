@@ -44,6 +44,12 @@ Create storage link
 php artisan storage:link
 ```
 
+Create JQT secret
+
+```bash
+php artisan jwt:secret
+```
+
 ## Credits
 
 * **Cyril de Wit** - _Creator_ - [cyrildewit](https://github.com/cyrildewit)

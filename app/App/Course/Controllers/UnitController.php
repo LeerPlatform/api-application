@@ -3,7 +3,6 @@
 namespace App\Course\Controllers;
 
 use Domain\Course\Models\Unit;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Course\Resources\Unit as UnitResource;
 use App\Course\Resources\UnitCollection;
@@ -13,7 +12,7 @@ use Support\Controller;
 
 final class UnitController extends Controller
 {
-    public function index()
+    public function index(): UnitCollection
     {
         $units = QueryBuilder::for(Unit::class)
             ->allowedFilters([
@@ -31,7 +30,7 @@ final class UnitController extends Controller
         return new UnitCollection($units);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): UnitResource
     {
         $request->validate([
             'slug' => ['required', 'string', 'unique:units'],
@@ -53,7 +52,7 @@ final class UnitController extends Controller
             ]);
     }
 
-    public function show(Unit $unit)
+    public function show(Unit $unit): UnitResource
     {
         $unit = QueryBuilder::for(Unit::class)
             ->allowedIncludes([
@@ -66,7 +65,7 @@ final class UnitController extends Controller
         return new UnitResource($unit);
     }
 
-    public function update(Request $request, Unit $unit)
+    public function update(Request $request, Unit $unit): UnitResource
     {
         $request->validate([
             'slug' => ['required', 'string', 'unique:units'],
@@ -87,7 +86,7 @@ final class UnitController extends Controller
             ]);
     }
 
-    public function destroy(Unit $unit)
+    public function destroy(Unit $unit): UnitResource
     {
         $unit->delete();
 

@@ -6,13 +6,15 @@ use App\User\Requests\UserUpdateRequest;
 use App\User\Resources\User as UserResource;
 use App\User\Resources\UserCollection;
 use Domain\User\Models\User;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Http\JsonResponse;
 
 final class UserController
 {
-    public function index()
+    public function index(): UserCollection
     {
         $users = QueryBuilder::for(User::class)
             ->allowedFilters([
@@ -27,7 +29,7 @@ final class UserController
         return new UserCollection($users);
     }
 
-    public function show(User $user)
+    public function show(User $user): UserResource
     {
         $user = QueryBuilder::for(User::class)
             ->allowedIncludes([
@@ -39,7 +41,7 @@ final class UserController
         return new UserResource($user);
     }
 
-    public function update(UserUpdateRequest $request, User $user)
+    public function update(UserUpdateRequest $request, User $user): JsonResponse
     {
         $user->update($request->validated());
 
@@ -48,7 +50,7 @@ final class UserController
         ]);
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user): UserResource
     {
         $user->delete();
 
@@ -58,7 +60,7 @@ final class UserController
             ]);
     }
 
-    protected function guard()
+    protected function guard(): Guard
     {
         return Auth::guard('api');
     }

@@ -6,14 +6,14 @@ use Domain\Course\Models\Course;
 use Domain\Topic\Models\Topic;
 use Illuminate\Http\Request;
 use Support\CustomVisitor;
+use Illuminate\Http\JsonResponse;
 
 final class ViewController
 {
-    public function recordTopicView(Request $request, $topic)
+    public function recordTopicView(Request $request, $topic, CustomVisitor $visitor): JsonResponse
     {
         $topic = Topic::findOrFail($topic);
 
-        $visitor = app(CustomVisitor::class);
         $visitor->setId($request->input('visitor'));
         $visitor->setIp($request->input('ip_address'));
         $visitor->setHasDoNotTrackHeader($request->boolean('has_do_not_track_header'));
@@ -24,11 +24,11 @@ final class ViewController
             ->record();
 
         return response()->json([
-            'message' => 'View sucessfully recorded!',
+            'message' => 'View successfully recorded!',
         ]);
     }
 
-    public function recordCourseView(Request $request, $course)
+    public function recordCourseView(Request $request, $course): JsonResponse
     {
         $course = Course::findOrFail($course);
 
@@ -43,7 +43,7 @@ final class ViewController
             ->record();
 
         return response()->json([
-            'message' => 'View sucessfully recorded!',
+            'message' => 'View successfully recorded!',
         ]);
     }
 }

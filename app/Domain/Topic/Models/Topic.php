@@ -17,7 +17,7 @@ class Topic extends Model implements Viewable
 
     protected $table = 'topics';
 
-    public $translatable = [
+    public array $translatable = [
         'display_name',
         'description',
     ];
@@ -27,7 +27,7 @@ class Topic extends Model implements Viewable
         return $this->hasMany(Course::class);
     }
 
-    public function getUniqueViewsCount()
+    public function getUniqueViewsCount(): int
     {
         return views($this)
             ->period(Period::subMonths(1))

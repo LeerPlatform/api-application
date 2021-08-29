@@ -8,7 +8,7 @@ class BaseApplication extends LaravelApplication
 {
     protected $namespace = 'App\\';
 
-    public function path($path = '')
+    public function path($path = ''): string
     {
         return $this->basePath.DIRECTORY_SEPARATOR.'app/App'.($path ? DIRECTORY_SEPARATOR.$path : $path);
     }

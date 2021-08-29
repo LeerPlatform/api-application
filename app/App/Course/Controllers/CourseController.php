@@ -3,11 +3,11 @@
 namespace App\Course\Controllers;
 
 use App\Course\Resources\Course as CourseResource;
-use App\Course\Resources\Enrollment as EnrollmentResource;
+use Domain\User\Models\User;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use App\Course\Resources\CourseCollection;
 use Domain\Course\Models\Course;
-use Domain\Course\Models\Enrollment;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -17,10 +17,11 @@ use Spatie\QueryBuilder\QueryBuilder;
 use App\Course\QueryBuilder\PopularSort;
 use App\Course\QueryBuilder\FilterSearchableFields;
 use Support\Controller;
+use Illuminate\Http\JsonResponse;
 
 final class CourseController extends Controller
 {
-    public function index()
+    public function index(): CourseCollection
     {
         $courses = QueryBuilder::for(Course::class)
             ->allowedFilters([
@@ -54,7 +55,7 @@ final class CourseController extends Controller
         return new CourseCollection($courses);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): CourseResource
     {
         $request->validate([
             'slug' => ['required', 'string', 'unique:courses'],
@@ -67,13 +68,13 @@ final class CourseController extends Controller
         ]);
 
         $course = new Course();
-        $course->slug = $request->input('slug');
-        $course->title = $request->input('title');
-        $course->headline = $request->input('headline');
-        $course->description = $request->input('description');
-        $course->description_excerpt = $request->input('description_excerpt');
-        $course->learning_points = $request->input('learning_points');
-        $course->target_audience = $request->input('target_audience');
+        $course->setAttribute('slug', $request->input('slug'));
+        $course->setAttribute('title', $request->input('title'));
+        $course->setAttribute('headline', $request->input('headline'));
+        $course->setAttribute('description', $request->input('description'));
+        $course->setAttribute('description_excerpt', $request->input('description_excerpt'));
+        $course->setAttribute('learning_points', $request->input('learning_points'));
+        $course->setAttribute('target_audience', $request->input('target_audience'));
         $course->save();
 
         return (new CourseResource($course))
@@ -82,7 +83,7 @@ final class CourseController extends Controller
             ]);
     }
 
-    public function show($id)
+    public function show($id): CourseResource
     {
         $course = QueryBuilder::for(Course::class)
             ->allowedIncludes([
@@ -103,7 +104,7 @@ final class CourseController extends Controller
         return new CourseResource($course);
     }
 
-    public function update(Request $request, Course $course)
+    public function update(Request $request, Course $course): CourseResource
     {
         $request->validate([
             'slug' => ['required', 'string'],
@@ -115,13 +116,13 @@ final class CourseController extends Controller
             'target_audience' => ['required', 'array'],
         ]);
 
-        $course->slug = $request->input('slug');
-        $course->title = $request->input('title');
-        $course->headline = $request->input('headline');
-        $course->description = $request->input('description');
-        $course->description_excerpt = $request->input('description_excerpt');
-        $course->learning_points = $request->input('learning_points');
-        $course->target_audience = $request->input('target_audience');
+        $course->setAttribute('slug', $request->input('slug'));
+        $course->setAttribute('title', $request->input('title'));
+        $course->setAttribute('headline', $request->input('headline'));
+        $course->setAttribute('description', $request->input('description'));
+        $course->setAttribute('description_excerpt', $request->input('description_excerpt'));
+        $course->setAttribute('learning_points', $request->input('learning_points'));
+        $course->setAttribute('target_audience', $request->input('target_audience'));
         $course->save();
 
         return (new CourseResource($course))
@@ -130,7 +131,7 @@ final class CourseController extends Controller
             ]);
     }
 
-    public function destroy(Course $course)
+    public function destroy(Course $course): CourseResource
     {
         $course->delete();
 
@@ -140,8 +141,9 @@ final class CourseController extends Controller
             ]);
     }
 
-    public function enroll(Course $course)
+    public function enroll(Course $course): JsonResponse
     {
+        /** @var User $user */
         $user = $this->guard()->user();
 
         $user->enrolledCourses()->syncWithoutDetaching($course);
@@ -151,7 +153,7 @@ final class CourseController extends Controller
         ]);
     }
 
-    public function guard()
+    public function guard(): Guard
     {
         return Auth::guard('api');
     }

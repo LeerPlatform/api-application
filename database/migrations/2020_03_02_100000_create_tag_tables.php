@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTagTables extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');

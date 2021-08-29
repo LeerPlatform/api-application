@@ -2,11 +2,9 @@
 
 namespace App\Topic\Controllers;
 
-use App\Course\Resources\CourseCollection;
 use App\Topic\Resources\Topic as TopicResource;
 use App\Topic\Resources\TopicCollection;
 use Domain\Topic\Models\Topic;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\AllowedSort;
@@ -16,7 +14,7 @@ use App\Topic\QueryBuilder\PopularSort;
 
 final class TopicController extends Controller
 {
-    public function index()
+    public function index(): TopicCollection
     {
         $topics = QueryBuilder::for(Topic::class)
             ->allowedFilters([
@@ -36,7 +34,7 @@ final class TopicController extends Controller
         return new TopicCollection($topics);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): TopicResource
     {
         $request->validate([
             'slug' => ['required', 'string', 'unique:topics'],
@@ -56,7 +54,7 @@ final class TopicController extends Controller
             ]);
     }
 
-    public function show(Topic $topic)
+    public function show(Topic $topic): TopicResource
     {
         $topic = QueryBuilder::for(Topic::class)
             ->allowedIncludes([
@@ -68,7 +66,7 @@ final class TopicController extends Controller
         return new TopicResource($topic);
     }
 
-    public function update(Request $request, Topic $topic)
+    public function update(Request $request, Topic $topic): TopicResource
     {
         $request->validate([
             'slug' => ['required', 'string', 'unique:topics'],
@@ -87,7 +85,7 @@ final class TopicController extends Controller
             ]);
     }
 
-    public function destroy(Topic $topic)
+    public function destroy(Topic $topic): TopicResource
     {
         $topic->delete();
 

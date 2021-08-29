@@ -6,16 +6,11 @@ use CyrildeWit\EloquentViewable\Visitor;
 
 class CustomVisitor extends Visitor
 {
-    protected $id;
-    protected $ip;
-    protected $hasDoNotTrackHeader;
-    protected $isCrawler;
+    protected int $id;
+    protected string $ip;
+    protected bool $hasDoNotTrackHeader;
+    protected bool $isCrawler;
 
-    /**
-     * Get the unique ID that represent's the visitor.
-     *
-     * @return string
-     */
     public function id(): string
     {
         return $this->id;
@@ -41,11 +36,6 @@ class CustomVisitor extends Visitor
         $this->ip = $ip;
     }
 
-    /**
-     * Determine if the visitor has a "Do Not Track" header.
-     *
-     * @return bool
-     */
     public function hasDoNotTrackHeader(): bool
     {
         return $this->hasDoNotTrackHeader;
@@ -56,11 +46,6 @@ class CustomVisitor extends Visitor
         $this->hasDoNotTrackHeader = $hasDoNotTrackHeader;
     }
 
-    /**
-     * Determine if the visitor is a crawler.
-     *
-     * @return bool
-     */
     public function isCrawler(): bool
     {
         return $this->isCrawler;

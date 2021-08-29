@@ -58,7 +58,7 @@ services:
     image: redis:4-alpine
     container_name: lpap-redis
     ports:
-      - 6379:6379
+      - "6379:6379"
     volumes:
       - redis:/data
 

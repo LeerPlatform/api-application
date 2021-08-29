@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class FilterSearchableFields implements Filter
 {
-    protected $searchableColumns = [];
+    protected array $searchableColumns = [];
 
     public function setSearchableColumns($columns): self
     {
@@ -21,7 +21,7 @@ class FilterSearchableFields implements Filter
         $query->search($this->searchableColumns, $value);
     }
 
-    public static function searchOn(...$columns)
+    public static function searchOn(...$columns): FilterSearchableFields
     {
         return (new static)->setSearchableColumns($columns);
     }

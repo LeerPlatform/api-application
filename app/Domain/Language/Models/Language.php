@@ -11,7 +11,7 @@ class Language extends Model
 
     protected $table = 'languages';
 
-    public $translatable = [
+    public array $translatable = [
         'display_name',
     ];
 }

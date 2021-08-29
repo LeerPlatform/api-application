@@ -1,6 +1,6 @@
 <?php
 
-function subdomain(string $subdomain)
+function subdomain(string $subdomain): string
 {
     return vsprintf('%s.%s', [
         $subdomain,

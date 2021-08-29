@@ -5,22 +5,24 @@ namespace App\Student\Controllers;
 use App\User\Resources\User as UserResource;
 use Domain\User\Models\User;
 use Domain\Student\Models\StudentAccount;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 use Support\Controller;
 
 final class RegisterController extends Controller
 {
     use RegistersUsers;
 
-    protected function registered(Request $request, User $user)
+    protected function registered(Request $request, User $user): UserResource
     {
         return new UserResource($user);
     }
 
-    protected function validator(array $data)
+    protected function validator(array $data): ValidatorContract
     {
         return Validator::make($data, [
             'name'     => ['required', 'string', 'max:255'],
@@ -45,7 +47,7 @@ final class RegisterController extends Controller
         return $user;
     }
 
-    protected function guard()
+    protected function guard(): Guard
     {
         return Auth::guard('api');
     }

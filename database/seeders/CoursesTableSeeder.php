@@ -7,7 +7,6 @@ use Domain\Course\Models\Course;
 use Domain\Course\Models\Section;
 use Domain\Course\Enums\CourseLevel;
 use Domain\Language\Models\Language;
-use Domain\Topic\Models\Topic;
 use Illuminate\Database\Seeder;
 use Spatie\Tags\Tag;
 
@@ -19,7 +18,7 @@ class CoursesTableSeeder extends Seeder
          * SVG Gevorderde Cursus.
          */
         $course = new Course();
-        $course->slug = 'svg-gevorderde-cursus';
+        $course->setAttribute('slug', 'svg-gevorderde-cursus');
         $course->setTranslation('title', 'nl', 'SVG gevorderde cursus');
         $course->setTranslation('headline', 'nl', 'Leer de basisprincipes van SVG');
         $course->setTranslation('description', 'nl', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium velit leo, vitae congue nisi ullamcorper et. Aenean vitae orci eleifend, efficitur ante at, posuere ex. Donec laoreet pharetra molestie. Suspendisse lacinia vehicula nisi, id congue nibh porta at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Morbi eu tempus est. Phasellus sed justo sodales, ornare nisl sed, viverra dolor. Suspendisse eget mi auctor elit vestibulum volutpat. Curabitur auctor dictum est, ac efficitur sem. Maecenas et faucibus turpis, nec tempor mauris. Praesent sagittis dapibus neque ut aliquam. Nam dapibus, arcu sit amet laoreet eleifend, enim ante euismod diam, at lacinia enim leo et sem. Donec quam eros, dignissim vel vestibulum eu, elementum et dolor. Aliquam hendrerit tellus sit amet ante molestie fermentum. Nulla et sem vitae augue finibus fringilla vitae vel ligula. Maecenas leo quam, molestie tincidunt condimentum quis, sodales ac massa.</p>');
@@ -37,16 +36,16 @@ class CoursesTableSeeder extends Seeder
         //     'Beginners',
         //     'Hobbiesten',
         // ];
-        $course->level = CourseLevel::Beginner;
-        $course->estimated_duration = 12;
+        $course->setAttribute('level', CourseLevel::Beginner);
+        $course->setAttribute('estimated_duration', 12);
         // $course->status = 'draft';
         // $course
         //     ->addMedia(storage_path('app/public/defaults/example-car-2048x1152.png'))
         //     ->preservingOriginal()
         //     ->toMediaCollection('images');
-        $course->published_at = now();
-        $course->created_at = now();
-        $course->updated_at = now()->addWeeks(1);
+        $course->setAttribute('published_at', now());
+        $course->setAttribute('created_at', now());
+        $course->setAttribute('updated_at', now()->addWeek());
 
         // Language
         $course->language()->associate(Language::where('locale', 'nl')->first());
@@ -70,7 +69,7 @@ class CoursesTableSeeder extends Seeder
         $course->authors()->attach(3);
 
         // Thumbnail
-        $course->addMedia(resource_path('seeds/25-320x180.jpg'))
+        $course->addMedia(resource_path('seeders/25-320x180.jpg'))
             ->preservingOriginal()
             ->toMediaCollection('thumbnails');
 
@@ -166,7 +165,7 @@ class CoursesTableSeeder extends Seeder
         //     ->toMediaCollection('images');
         $course->published_at = now();
         $course->created_at = now()->subWeeks(2);
-        $course->updated_at = now()->subWeeks(2)->addWeeks(1);
+        $course->updated_at = now()->subWeeks(2)->addWeek();
 
         // Language
         $course->language()->associate(Language::where('locale', 'nl')->first());
@@ -184,7 +183,7 @@ class CoursesTableSeeder extends Seeder
         $course->authors()->attach(1);
 
         // Thumbnail
-        $course->addMedia(resource_path('seeds/203-320x180.jpg'))
+        $course->addMedia(resource_path('seeders/203-320x180.jpg'))
             ->preservingOriginal()
             ->toMediaCollection('thumbnails');
 
@@ -293,7 +292,7 @@ class CoursesTableSeeder extends Seeder
         //     ->toMediaCollection('images');
         $course->published_at = now();
         $course->created_at = now();
-        $course->updated_at = now()->addWeeks(1);
+        $course->updated_at = now()->addWeek();
 
         // Language
         $course->language()->associate(Language::where('locale', 'nl')->first());
@@ -311,7 +310,7 @@ class CoursesTableSeeder extends Seeder
         $course->authors()->attach(1);
 
         // Thumbnail
-        $course->addMedia(resource_path('seeds/204-320x180.jpg'))
+        $course->addMedia(resource_path('seeders/204-320x180.jpg'))
             ->preservingOriginal()
             ->toMediaCollection('thumbnails');
 
@@ -407,7 +406,7 @@ class CoursesTableSeeder extends Seeder
         //     ->toMediaCollection('images');
         $course->published_at = now();
         $course->created_at = now();
-        $course->updated_at = now()->addWeeks(1);
+        $course->updated_at = now()->addWeek();
 
         // Language
         $course->language()->associate(Language::where('locale', 'nl')->first());
@@ -425,7 +424,7 @@ class CoursesTableSeeder extends Seeder
         $course->authors()->attach(1);
 
         // Thumbnail
-        $course->addMedia(resource_path('seeds/26-320x180.jpg'))
+        $course->addMedia(resource_path('seeders/26-320x180.jpg'))
             ->preservingOriginal()
             ->toMediaCollection('thumbnails');
 
@@ -521,7 +520,7 @@ class CoursesTableSeeder extends Seeder
         //     ->toMediaCollection('images');
         $course->published_at = now();
         $course->created_at = now();
-        $course->updated_at = now()->addWeeks(1);
+        $course->updated_at = now()->addWeek();
 
         // Language
         $course->language()->associate(Language::where('locale', 'nl')->first());
@@ -539,7 +538,7 @@ class CoursesTableSeeder extends Seeder
         $course->authors()->attach(1);
 
         // Thumbnail
-        $course->addMedia(resource_path('seeds/27-320x180.jpg'))
+        $course->addMedia(resource_path('seeders/27-320x180.jpg'))
             ->preservingOriginal()
             ->toMediaCollection('thumbnails');
 

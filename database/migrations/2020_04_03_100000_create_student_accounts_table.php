@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateStudentAccountsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('student_accounts', function (Blueprint $table) {
             $table->id();
@@ -20,12 +15,7 @@ class CreateStudentAccountsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('student_accounts');
     }

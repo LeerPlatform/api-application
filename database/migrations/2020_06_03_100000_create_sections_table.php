@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSectionsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();

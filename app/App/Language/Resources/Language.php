@@ -2,20 +2,12 @@
 
 namespace App\Language\Resources;
 
-use App\Topic\Resources\Topic;
-use App\User\Resources\UserCollection;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Language extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'id'            => $this->id,

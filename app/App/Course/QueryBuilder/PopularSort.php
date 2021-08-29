@@ -13,7 +13,7 @@ class PopularSort implements Sort
 
         $query->withCount('students');
 
-        $query->orderBy('students_count');
-        $query->orderBy('unique_views_count');
+        $query->orderBy('students_count', $direction);
+        $query->orderBy('unique_views_count', $direction);
     }
 }
