@@ -1,16 +1,13 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Domain\Language\Models\Language;
 
 class LanguagesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         Language::create([
             'locale' => 'nl',

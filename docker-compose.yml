@@ -1,0 +1,88 @@
+version: "3.8"
+services:
+  php:
+    container_name: lpap-php
+    build:
+      context: ./
+      dockerfile: "./docker/php/Dockerfile"
+      args:
+        - BUILD_UID=${DOCKER_UID}
+        - BUILD_GID=${DOCKER_GID}
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html:cached
+      - /var/www/html/node_modules
+      - /var/www/html/.git
+      - ./public:/var/www/html/public:delegated
+
+  nginx:
+    container_name: lpap-nginx
+    image: wodby/nginx
+    environment:
+      NGINX_STATIC_OPEN_FILE_CACHE: "off"
+      NGINX_ERROR_LOG_LEVEL: debug
+      NGINX_BACKEND_HOST: php
+      NGINX_VHOST_PRESET: php
+      NGINX_SERVER_ROOT: /var/www/html/public
+    volumes:
+      - ./public:/var/www/html/public:delegated
+    networks:
+      - default
+      - traefik-gateway
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-gateway"
+      - "traefik.http.routers.lpap-nginx.rule=Host(`api.leer-platform.localhost`) || Host(`www.api.leer-platform.localhost`)"
+      - "traefik.http.routers.lpap-nginx.entrypoints=https"
+      - "traefik.http.routers.lpap-nginx.tls=true"
+
+  mariadb:
+    container_name: lpap-mariadb
+    image: mariadb:10.4
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./docker/mariadb/sql/init.sql:/data/application/init.sql
+      - mariadb:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: leer-platform_api
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: lpap
+      MYSQL_PASSWORD: lpap
+    ports:
+      - "127.0.0.1:34301:3306"
+    networks:
+      - default
+
+  redis:
+    image: redis:4-alpine
+    container_name: lpap-redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: lpap-mailhog
+    networks:
+      - default
+      - traefik-gateway
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-gateway"
+      - "traefik.http.services.lpap-mailhog.loadbalancer.server.port=8025"
+      - "traefik.http.routers.lpap-mailhog.rule=Host(`mailhog.leer-platform.test`)"
+      - "traefik.http.routers.lpap-mailhog.entrypoints=https"
+      - "traefik.http.routers.lpap-mailhog.tls=true"
+
+volumes:
+  mariadb:
+    driver: local
+  redis:
+    driver: local
+
+networks:
+  traefik-gateway:
+    external:
+      name: traefik-gateway

@@ -14,6 +14,18 @@ Clone the repository
 git clone https://github.com/LeerPlatform/api-application.git
 ```
 
+Start containers
+
+```bash
+docker-compose up -d
+```
+
+SSH into PHP container
+
+```bash
+docker-compose exec php sh
+```
+
 Install dependencies
 
 ```bash
@@ -34,10 +46,10 @@ php artisan storage:link
 
 ## Credits
 
-* **Cyril de Wit** - _Initial work_ - [cyrildewit](https://github.com/cyrildewit)
+* **Cyril de Wit** - _Creator_ - [cyrildewit](https://github.com/cyrildewit)
 
 See also the list of [contributors](https://github.com/cyrildewit/eloquent-viewable/graphs/contributors) who participated in this project.
 
 ## Copyright
 
-Copyright (C) 2020 [Leer Platform](https://github.com/LeerPlatform), [Cyril de Wit](https://github.com/cyrildewit)
+Copyright (C) 2021 [Leer Platform](https://github.com/LeerPlatform), [Cyril de Wit](https://github.com/cyrildewit)

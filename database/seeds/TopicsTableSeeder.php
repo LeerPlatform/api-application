@@ -1,16 +1,13 @@
 <?php
 
+namespace Database\Seeders;
+
 use Domain\Topic\Models\Topic;
 use Illuminate\Database\Seeder;
 
 class TopicsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         $subject = new Topic();
         $subject->slug = 'marketing-communicatie-sales';

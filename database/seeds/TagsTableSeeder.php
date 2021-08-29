@@ -1,16 +1,13 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Spatie\Tags\Tag;
 
 class TagsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         $tag = Tag::findOrCreate('SVG', 'courseTag');
         $tag->setTranslation('name', 'nl', 'SVG');

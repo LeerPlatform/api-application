@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Domain\Course\Models\Unit;
 use Domain\Course\Models\Course;
 use Domain\Course\Models\Section;
@@ -11,12 +13,7 @@ use Spatie\Tags\Tag;
 
 class CoursesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         /**
          * SVG Gevorderde Cursus.
